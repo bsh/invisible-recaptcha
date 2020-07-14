@@ -30,6 +30,13 @@ class InvisibleReCaptcha
      */
     protected $secretKey;
 
+	/**
+	 * Proxy for connection
+	 *
+	 * @var string
+	 */
+	protected $proxy;
+
     /**
      * The other config options.
      *
@@ -49,16 +56,27 @@ class InvisibleReCaptcha
      * @param string $siteKey
      * @param array $options
      */
-    public function __construct($siteKey, $secretKey, $options = [])
+    public function __construct($siteKey, $secretKey, $options = [], $proxy)
     {
         $this->siteKey = $siteKey;
         $this->secretKey = $secretKey;
+        $this->proxy = $proxy;
         $this->setOptions($options);
-        $this->setClient(
-            new Client([
-                'timeout' => $this->getOption('timeout', 5)
-            ])
-        );
+        if($proxy && $proxy != '') {
+			$this->setClient(
+				new Client([
+					'timeout' => $this->getOption('timeout', 5),
+					'proxy' => $this->proxy
+				])
+			);
+		}
+        else {
+			$this->setClient(
+				new Client([
+					'timeout' => $this->getOption('timeout', 5)
+				])
+			);
+		}
     }
 
     /**

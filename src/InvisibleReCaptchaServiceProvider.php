@@ -27,13 +27,14 @@ class InvisibleReCaptchaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('captcha', function ($app) {
+        $this->app->singleton(function ($app) {
             return new InvisibleReCaptcha(
                 $app['config']['captcha.siteKey'],
                 $app['config']['captcha.secretKey'],
-                $app['config']['captcha.options']
+                $app['config']['captcha.options'],
+                $app['config']['captcha.proxy']
             );
-        });
+        }, 'captcha');
 
         $this->app->afterResolving('blade.compiler', function () {
             $this->addBladeDirective($this->app['blade.compiler']);

@@ -16,5 +16,7 @@ return [
         'timeout' => env('INVISIBLE_RECAPTCHA_TIMEOUT', 5),
         // set true to show binding status on your javascript console
         'debug' => env('INVISIBLE_RECAPTCHA_DEBUG', false)
-    ]
+    ],
+
+	'proxy' => env('PROXY'),
 ];

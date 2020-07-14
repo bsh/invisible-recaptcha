@@ -1,4 +1,4 @@
-Invisible reCAPTCHA
+Invisible reCAPTCHA - with proxy support
 ==========
 ![php-badge](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg)
 [![packagist-badge](https://img.shields.io/packagist/v/albertcht/invisible-recaptcha.svg)](https://packagist.org/packages/albertcht/invisible-recaptcha)
